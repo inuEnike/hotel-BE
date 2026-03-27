@@ -1,6 +1,7 @@
 import express from "express";
 import { errorMiddleware } from "./utils/middlewares/error.middleware.js";
 import hotelRoute from "./routes/hotel.route.js";
+import bookRoute from "./routes/booking.route.js";
 
 export const app = express();
 
@@ -14,6 +15,7 @@ app.get("/health-check", (_req, res) => {
 });
 
 app.use("/hotel", hotelRoute);
+app.use("/booking", bookRoute);
 
 app.all("*all", (_req, res) => {
   res.status(404).json({

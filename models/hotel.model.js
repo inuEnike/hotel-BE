@@ -8,7 +8,7 @@ const hotelSchema = new mongoose.Schema(
     },
     desc: {
       type: String,
-      required: [true, "The Descripton of the hotel is required"],
+      required: [true, "The Description of the hotel is required"],
     },
     images: {
       type: [String],

@@ -50,6 +50,10 @@ const roomSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    desc: {
+      type: String,
+      required: [true, "Description is required"],
+    },
   },
   { timestamps: true },
 );

@@ -22,8 +22,8 @@ export const hotelServices = {
     if (existingHotel) {
       throw new Error("An Hotel with that name already exists!!!");
     }
-    const hotel = HotelRepository.create(data);
-    return hotel;
+      return HotelRepository.create(data);
+
   },
 
   findByIdAndUpdate: async (id, data) => {
@@ -34,8 +34,8 @@ export const hotelServices = {
     if (!hotelAvail) {
       throw new Error("No hotel with the ID found");
     }
-    const hotel = HotelRepository.updateById(id, data);
-    return hotel;
+
+    return HotelRepository.updateById(id, data);
   },
 
   findByIdAndDelete: async (id) => {
@@ -46,7 +46,7 @@ export const hotelServices = {
     if (!hotelAvail) {
       throw new Error("No hotel with the ID found");
     }
-    const hotel = HotelRepository.deleteById(id);
-    return hotel;
+      return HotelRepository.deleteById(id);
+
   },
 };
