@@ -2,6 +2,7 @@ import express from "express";
 import { errorMiddleware } from "./utils/middlewares/error.middleware.js";
 import hotelRoute from "./routes/hotel.route.js";
 import bookRoute from "./routes/booking.route.js";
+import roomRoute from "./routes/room.route.js";
 import cors from "cors";
 import authRoute from "./routes/auth.route.js";
 
@@ -22,6 +23,7 @@ app.get("/health-check", (_req, res) => {
 });
 
 app.use("/hotel", hotelRoute);
+app.use("/rooms", roomRoute);
 app.use("/booking", bookRoute);
 app.use("/auth", authRoute);
 

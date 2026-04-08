@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import { config } from "./config.js";
-import { errorAuditEmitter } from "./loggers/error.js";
-import { auditEmitter } from "./loggers/message.js";
+import {config} from "./config.js";
+import {errorAuditEmitter} from "./loggers/error.js";
+import {auditEmitter} from "./loggers/message.js";
 
 export const configureDb = async () => {
   try {

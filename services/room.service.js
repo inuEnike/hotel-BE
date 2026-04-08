@@ -2,7 +2,8 @@ import {RoomRepository} from "../repositories/room.repository.js";
 
 export const RoomService = {
     createRoom: async (data) => {
-        const {hotelId, roomCode, roomType, basePrice, capacity: {adult, children, maxOccupancy}, bedSetup, desc} = data
+        const { adult, children, maxOccupancy } = data.capacity || {};
+        const {hotelId, roomCode, roomType, basePrice, bedSetup, desc} = data
 
         if (!hotelId || !roomCode || !roomType || !basePrice || !maxOccupancy || !desc) {
             throw new Error("Missing required fields: Please check hotelId, roomCode, price, occupancy, and description.");

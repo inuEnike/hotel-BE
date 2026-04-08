@@ -40,12 +40,18 @@ export const BookingController = {
           message: "checkIn and checkOut are required",
         });
       }
+      if (new Date(checkOut) <= new Date(checkIn)) {
+        return res.status(400).json({
+          success: false,
+          message: "Check-out date must be at least one day after Check-in",
+        });
+      }
 
       const rooms = await BookingServices.getAvailableRooms(checkIn, checkOut);
 
       return res.status(200).json({
         success: true,
-        results: rooms.length,
+        total: rooms.length,
         data: rooms,
       });
     } catch (err) {
