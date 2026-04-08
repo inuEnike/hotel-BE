@@ -77,7 +77,6 @@ export const BookingServices = {
     if (!id) {
       throw new Error("Id is needed");
     }
-      return await BookingRepository.findById(id);
-
+    return await BookingRepository.findById(id);
   },
 };

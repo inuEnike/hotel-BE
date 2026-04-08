@@ -23,6 +23,6 @@ export const BookingRepository = {
   },
 
   deleteById: async (id) => {
-    return Booking.findByIdAndDelete(id, null);
+    return await Booking.findByIdAndDelete(id, null);
   },
 };
