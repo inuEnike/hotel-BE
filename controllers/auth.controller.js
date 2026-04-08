@@ -21,11 +21,11 @@ export const AuthController = {
     try {
       const data = req.body;
 
-      const auth = AuthServices.getUser(data);
-      if (auth) {
+      const token = await AuthServices.getUser(data);
+      if (token) {
         res.status(200).json({
           success: true,
-          data: authMiddleware.payload(),
+          data: token,
         });
       }
     } catch (error) {

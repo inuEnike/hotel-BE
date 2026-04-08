@@ -27,7 +27,7 @@ app.use("/rooms", roomRoute);
 app.use("/booking", bookRoute);
 app.use("/auth", authRoute);
 
-app.all("*all", (_req, res) => {
+app.use((_req, res) => {
   res.status(404).json({
     statusCode: 404,
     success: false,

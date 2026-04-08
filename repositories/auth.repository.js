@@ -4,7 +4,7 @@ export const authRepository = {
   create: async (data) => {
     return await new Auth(data).save();
   },
-  getUser: async (data) => {
-    return await Auth.findOne({ data });
+  getUser: async (email) => {
+    return await Auth.findOne({ email });
   },
 };

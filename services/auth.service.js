@@ -24,18 +24,15 @@ export const AuthServices = {
   },
   getUser: async (data) => {
     const { email, password } = data;
-    if (!email || !password) {
-      throw new Error("please input all fields");
-    }
+    if (!email || !password) throw new Error("Please input all fields");
 
-    const exists = authRepository.getUser(email);
+    const user = await authRepository.getUser(email);
+    if (!user) throw new Error("Incorrect Credentials");
 
-    const comp = bcrypt.compare(exists?.password, password);
+    const match = await bcrypt.compare(password, user.password); // ✅ await here
+    if (!match) throw new Error("Incorrect Credentials");
 
-    if (!exists && !comp) {
-      throw new Error("Incorrect Credencials");
-    }
-    await authMiddleware.payload(data);
-    return authRepository.getUser();
+    const token = await authMiddleware.payload(user); // generates JWT
+    return token;
   },
 };
