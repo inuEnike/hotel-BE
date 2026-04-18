@@ -1,5 +1,4 @@
 import { AuthServices } from "../services/auth.service.js";
-import { authMiddleware } from "../utils/middlewares/auth.middleware.js";
 
 export const AuthController = {
   signUp: async (req, res, next) => {

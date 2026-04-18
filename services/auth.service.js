@@ -29,7 +29,7 @@ export const AuthServices = {
     const user = await authRepository.getUser(email);
     if (!user) throw new Error("Incorrect Credentials");
 
-    const match = await bcrypt.compare(password, user.password); // ✅ await here
+    const match = await bcrypt.compare(password, user.password); 
     if (!match) throw new Error("Incorrect Credentials");
 
     const token = await authMiddleware.payload(user); // generates JWT

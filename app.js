@@ -5,6 +5,7 @@ import bookRoute from "./routes/booking.route.js";
 import roomRoute from "./routes/room.route.js";
 import cors from "cors";
 import authRoute from "./routes/auth.route.js";
+import paymentRoute from "./routes/payment.route.js";
 
 export const app = express();
 const corsOptions = {
@@ -13,6 +14,8 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use("/payment/webhook", express.raw({ type: "application/json" }));
+
 app.use(express.json());
 
 app.get("/health-check", (_req, res) => {
@@ -26,6 +29,7 @@ app.use("/hotel", hotelRoute);
 app.use("/rooms", roomRoute);
 app.use("/booking", bookRoute);
 app.use("/auth", authRoute);
+app.use("/payment", paymentRoute);
 
 app.use((_req, res) => {
   res.status(404).json({
